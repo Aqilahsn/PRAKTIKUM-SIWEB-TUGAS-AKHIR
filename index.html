@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risol Majesty - Sistem Manajemen Stok</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-risol sticky-top">
+<div class="container-fluid px-4">
+<a class="navbar-brand fw-bold" href="index.html">
+<i class="bi bi-shop"></i> Risol Majesty
+</a>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item">
+<a class="nav-link active" href="index.html">Home</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="manage.html">Kelola Produk</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+<section class="hero-banner">
+<div class="hero-banner-wrapper">
+<img src="assets/banner-hero.jpg" alt="Banner Risol Majesty" class="img-fluid w-100">
+</div>
+</section>
+
+<section class="statistics-section py-5 bg-light">
+<div class="container">
+<h2 class="text-center mb-5 fw-bold">Statistik Dashboard</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="stat-card">
+<div class="stat-icon">
+<i class="bi bi-palette"></i>
+</div>
+<h3 class="stat-number">6</h3>
+<p class="stat-label">Total Varian</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="stat-card">
+<div class="stat-icon">
+<i class="bi bi-boxes"></i>
+</div>
+<h3 class="stat-number">500+</h3>
+<p class="stat-label">Stok Tersedia</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="stat-card">
+<div class="stat-icon">
+<i class="bi bi-graph-up"></i>
+</div>
+<h3 class="stat-number">1.250</h3>
+<p class="stat-label">Total Penjualan</p>
+</div>
+</div>
+
+</div>
+
+<div class="text-center mt-5">
+<a href="#produk" class="btn btn-warning btn-lg">
+<i class="bi bi-eye"></i> Lihat Produk
+</a>
+</div>
+
+</div>
+</section>
+
+<section class="product-section py-5" id="produk">
+<div class="container">
+<h2 class="text-center mb-5 fw-bold">Daftar Produk Risol</h2>
+
+<div class="row g-4">
+
+<div class="col-md-6 col-lg-4">
+<div class="product-card">
+<div class="product-image-wrapper">
+<img src="assets/risol-matcha.jpg" alt="Risol Matcha" class="card-img-top">
+<span class="badge-rasa">Matcha</span>
+</div>
+<div class="product-body">
+<h5 class="product-title">Risol Matcha Premium</h5>
+<p class="product-desc">Risol dengan isian matcha yang nikmat, memberikan cita rasa unik dan menyegarkan. Cocok untuk cemilan spesial setiap hari.</p>
+<div class="product-details">
+<p class="product-price"><strong>Rp 12.000</strong></p>
+<p class="product-stock">Stok: <span class="stock-number">85</span></p>
+</div>
+<button class="btn btn-sm btn-risol w-100" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="setDetailModal('Risol Matcha Premium', 'Rp 12.000', '85', 'Matcha', 'Risol dengan isian matcha premium berkualitas tinggi yang memberikan cita rasa unik, lembut, dan menyegarkan. Dibuat dari bahan-bahan pilihan terbaik dengan proses produksi yang higienis. Sempurna untuk cemilan spesial, hadiah, atau jajanan keluarga tercinta.')">
+<i class="bi bi-eye"></i> Lihat Detail
+</button>
+</div>
+</div>
+</div>
+
+<div class="col-md-6 col-lg-4">
+<div class="product-card">
+<div class="product-image-wrapper">
+<img src="assets/risol-coklat.jpg" alt="Risol Coklat" class="card-img-top">
+<span class="badge-rasa">Coklat</span>
+</div>
+<div class="product-body">
+<h5 class="product-title">Risol Coklat Lezat</h5>
+<p class="product-desc">Isian coklat yang kaya dan lezat, menciptakan kelezatan yang tak terlupakan di setiap gigitan.</p>
+<div class="product-details">
+<p class="product-price"><strong>Rp 12.000</strong></p>
+<p class="product-stock">Stok: <span class="stock-number">120</span></p>
+</div>
+<button class="btn btn-sm btn-risol w-100" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="setDetailModal('Risol Coklat Lezat', 'Rp 12.000', '120', 'Coklat', 'Risol dengan isian coklat premium yang kaya dan lezat. Dibuat dari coklat pilihan dengan cita rasa yang pekat namun tidak terlalu manis. Cocok untuk pecinta coklat dan sebagai hadiah istimewa untuk orang-orang terkasih.')">
+<i class="bi bi-eye"></i> Lihat Detail
+</button>
+</div>
+</div>
+</div>
+
+<div class="col-md-6 col-lg-4">
+<div class="product-card">
+<div class="product-image-wrapper">
+<img src="assets/risol-bolognese.jpg" alt="Risol Bolognese" class="card-img-top">
+<span class="badge-rasa">Bolognese</span>
+</div>
+<div class="product-body">
+<h5 class="product-title">Risol Bolognese Istimewa</h5>
+<p class="product-desc">Risol gurih dengan isian daging sapi yang empuk dan lezat, berkualitas istimewa.</p>
+<div class="product-details">
+<p class="product-price"><strong>Rp 14.000</strong></p>
+<p class="product-stock">Stok: <span class="stock-number">95</span></p>
+</div>
+<button class="btn btn-sm btn-risol w-100" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="setDetailModal('Risol Bolognese Istimewa', 'Rp 14.000', '95', 'Bolognese', 'Risol dengan isian daging sapi berkualitas tinggi yang dimasak dengan bumbu khas bolognese yang autentik. Daging empuk dan gurih, menciptakan cita rasa yang istimewa. Sempurna untuk acara khusus atau jamuan keluarga.')">
+<i class="bi bi-eye"></i> Lihat Detail
+</button>
+</div>
+</div>
+</div>
+
+<div class="col-md-6 col-lg-4">
+<div class="product-card">
+<div class="product-image-wrapper">
+<img src="assets/risol-mozarella.jpg" alt="Risol Mozzarella" class="card-img-top">
+<span class="badge-rasa">Mozzarella</span>
+</div>
+<div class="product-body">
+<h5 class="product-title">Risol Mozzarella Keju</h5>
+<p class="product-desc">Risol dengan isian keju mozzarella yang melumer, menciptakan tekstur yang unik dan menggugah selera.</p>
+<div class="product-details">
+<p class="product-price"><strong>Rp 15.000</strong></p>
+<p class="product-stock">Stok: <span class="stock-number">110</span></p>
+</div>
+<button class="btn btn-sm btn-risol w-100" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="setDetailModal('Risol Mozzarella Keju', 'Rp 15.000', '110', 'Mozzarella', 'Risol premium dengan isian keju mozzarella berkualitas tinggi yang lembut dan melumer di mulut. Memberikan pengalaman rasa yang luar biasa dengan tekstur yang unik. Ideal untuk penggemar keju atau sebagai surprise untuk orang-orang spesial.')">
+<i class="bi bi-eye"></i> Lihat Detail
+</button>
+</div>
+</div>
+</div>
+
+<div class="col-md-6 col-lg-4">
+<div class="product-card">
+<div class="product-image-wrapper">
+<img src="assets/risol-beef.jpg" alt="Risol Beef" class="card-img-top">
+<span class="badge-rasa">Beef</span>
+</div>
+<div class="product-body">
+<h5 class="product-title">Risol Beef Premium</h5>
+<p class="product-desc">Risol premium dengan daging sapi pilihan, empuk dan berkualitas tinggi untuk kepuasan maksimal.</p>
+<div class="product-details">
+<p class="product-price"><strong>Rp 16.000</strong></p>
+<p class="product-stock">Stok: <span class="stock-number">75</span></p>
+</div>
+<button class="btn btn-sm btn-risol w-100" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="setDetailModal('Risol Beef Premium', 'Rp 16.000', '75', 'Beef', 'Risol eksklusif dengan isian daging sapi premium yang dipilih dengan cermat dan dimasak dengan sempurna. Daging berkualitas tinggi, empuk, dan bergizi. Manjakan diri Anda dengan cita rasa premium yang tak terlupakan.')">
+<i class="bi bi-eye"></i> Lihat Detail
+</button>
+</div>
+</div>
+</div>
+
+<div class="col-md-6 col-lg-4">
+<div class="product-card">
+<div class="product-image-wrapper">
+<img src="assets/risol-tiramisu.jpg" alt="Risol Tiramisu" class="card-img-top">
+<span class="badge-rasa">Tiramisu</span>
+</div>
+<div class="product-body">
+<h5 class="product-title">Risol Tiramisu Manis</h5>
+<p class="product-desc">Risol dengan perpaduan rasa tiramisu yang manis dan nikmat, menyenangkan lidah setiap orang.</p>
+<div class="product-details">
+<p class="product-price"><strong>Rp 13.000</strong></p>
+<p class="product-stock">Stok: <span class="stock-number">105</span></p>
+</div>
+<button class="btn btn-sm btn-risol w-100" data-bs-toggle="modal" data-bs-target="#detailModal" onclick="setDetailModal('Risol Tiramisu Manis', 'Rp 13.000', '105', 'Tiramisu', 'Risol istimewa dengan isian tiramisu yang manis dan lezat, perpaduan sempurna antara rasa tradisional risol dan kue tiramisu modern. Cocok untuk pecinta dessert dan penikmat cita rasa unik.')">
+<i class="bi bi-eye"></i> Lihat Detail
+</button>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<footer class="bg-risol text-white text-center py-4 mt-5">
+<div class="container-fluid">
+<p class="mb-0">&copy; 2026 Risol Majesty. Semua hak cipta dilindungi.</p>
+<small>Sistem Manajemen Stok Produk</small>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
