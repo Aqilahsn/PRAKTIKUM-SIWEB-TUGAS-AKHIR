@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Risol Majesty — Artisan Snacks</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.php">Risol Majesty</a>
+
+    <button class="navbar-toggler border-0" type="button"
+      data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      style="color: rgba(247,240,232,0.8);">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.php">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="manage.html">Kelola Produk</a>
+        </li>
+
+        <!-- Dark Mode Toggle -->
+        <li class="nav-item ms-2">
+          <button class="btn-theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+            <i class="bi bi-moon-stars"></i>
+          </button>
+        </li>
+
+        <!-- Wishlist -->
+        <li class="nav-item ms-2">
+          <button class="btn btn-outline-light btn-sm position-relative"
+            data-bs-toggle="modal" data-bs-target="#wishlistModal">
+            <i class="bi bi-heart me-1"></i> Wishlist
+            <span id="wishlistBadge"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              style="display:none; font-size:0.65rem;">0</span>
+          </button>
+        </li>
+
+        <!-- Login / Logout — dikontrol JS via sessionStorage -->
+        <li class="nav-item ms-2" id="navBelumLogin" style="display:none;">
+          <a href="login.php" class="btn-nav-login">
+            <i class="bi bi-box-arrow-in-right me-1"></i>Login
+          </a>
+        </li>
+        <li class="nav-item ms-2 d-flex align-items-center gap-2" id="navSudahLogin" style="display:none;">
+          <span class="nav-user-badge">
+            <i class="bi bi-person-circle me-1"></i>
+            <span id="navTeksUser">admin</span>
+          </span>
+          <a class="btn-logout" style="cursor:pointer;" onclick="sessionStorage.removeItem('loginStatus'); sessionStorage.removeItem('loginUser'); window.location.href='login.html';">
+            <i class="bi bi-box-arrow-right me-1"></i>Logout
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ===== HERO ===== -->
+<section class="hero-banner">
+  <div class="hero-banner-wrapper">
+    <img src="assets/banner-hero.jpg" alt="Banner Risol Majesty">
+  </div>
+  <div class="hero-text-overlay">
+    <span class="hero-eyebrow">Artisan · Handcrafted · Premium</span>
+    <h1 class="hero-title">Cita Rasa yang<br><em>Tak Terlupakan</em></h1>
+    <a href="#produk" class="hero-btn">
+      <i class="bi bi-arrow-down"></i> Jelajahi Produk
+    </a>
+  </div>
+</section>
+
+
+<!-- ===== STATISTIK ===== -->
+<section class="statistics-section">
+  <div class="container">
+    <div class="text-center mb-2">
+      <span class="section-label">Ringkasan</span>
+      <h2 class="section-title">Statistik Dashboard</h2>
+      <div class="section-divider"><span class="section-divider-dot"></span></div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="bi bi-palette"></i></div>
+          <span class="stat-number">6</span>
+          <p class="stat-label">Total Varian</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="bi bi-boxes"></i></div>
+          <span class="stat-number">500+</span>
+          <p class="stat-label">Stok Tersedia</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="bi bi-graph-up"></i></div>
+          <span class="stat-number">1.250</span>
+          <p class="stat-label">Total Penjualan</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="#produk" class="btn btn-warning px-4">
+        <i class="bi bi-eye me-2"></i> Lihat Produk
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== PRODUK ===== -->
+<section class="product-section" id="produk">
+  <div class="container">
+    <div class="text-center mb-2">
+      <span class="section-label">Koleksi Kami</span>
+      <h2 class="section-title">Daftar Produk Risol</h2>
+      <div class="section-divider"><span class="section-divider-dot"></span></div>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Matcha -->
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="assets/risol-matcha.jpg" alt="Risol Matcha" class="card-img-top">
+            <span class="badge-rasa">Matcha</span>
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Risol Matcha Premium</h5>
+            <p class="product-desc">Isian matcha berkualitas tinggi yang memberikan cita rasa unik dan menyegarkan untuk cemilan spesial.</p>
+            <div class="product-details">
+              <p class="product-price">Rp 12.000</p>
+              <p class="product-stock">Stok: <span class="stock-number">85</span></p>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn-risol flex-grow-1 btn-detail"
+                data-nama="Risol Matcha Premium" data-harga="Rp 12.000"
+                data-stok="85" data-varian="Matcha"
+                data-deskripsi="Risol dengan isian matcha premium berkualitas tinggi yang memberikan cita rasa unik, lembut, dan menyegarkan. Dibuat dari bahan-bahan pilihan terbaik."
+                data-bs-toggle="modal" data-bs-target="#detailModal">
+                <i class="bi bi-eye"></i> Detail
+              </button>
+              <button class="btn-beli"><i class="bi bi-bag-plus"></i> Beli</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coklat -->
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="assets/risol-coklat.jpg" alt="Risol Coklat" class="card-img-top">
+            <span class="badge-rasa">Coklat</span>
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Risol Coklat Lezat</h5>
+            <p class="product-desc">Isian coklat yang kaya dan lezat, menciptakan kelezatan yang tak terlupakan di setiap gigitan.</p>
+            <div class="product-details">
+              <p class="product-price">Rp 12.000</p>
+              <p class="product-stock">Stok: <span class="stock-number">120</span></p>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn-risol flex-grow-1 btn-detail"
+                data-nama="Risol Coklat Lezat" data-harga="Rp 12.000"
+                data-stok="120" data-varian="Coklat"
+                data-deskripsi="Risol dengan isian coklat premium yang kaya dan lezat. Dibuat dari coklat pilihan dengan cita rasa pekat namun tidak terlalu manis."
+                data-bs-toggle="modal" data-bs-target="#detailModal">
+                <i class="bi bi-eye"></i> Detail
+              </button>
+              <button class="btn-beli"><i class="bi bi-bag-plus"></i> Beli</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bolognese -->
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="assets/risol-bolognese.jpg" alt="Risol Bolognese" class="card-img-top">
+            <span class="badge-rasa">Bolognese</span>
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Risol Bolognese Istimewa</h5>
+            <p class="product-desc">Risol gurih dengan isian daging sapi empuk berkualitas istimewa, bumbu autentik khas Italia.</p>
+            <div class="product-details">
+              <p class="product-price">Rp 14.000</p>
+              <p class="product-stock">Stok: <span class="stock-number">95</span></p>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn-risol flex-grow-1 btn-detail"
+                data-nama="Risol Bolognese Istimewa" data-harga="Rp 14.000"
+                data-stok="95" data-varian="Bolognese"
+                data-deskripsi="Risol dengan isian daging sapi berkualitas tinggi yang dimasak dengan bumbu khas bolognese autentik. Daging empuk dan gurih."
+                data-bs-toggle="modal" data-bs-target="#detailModal">
+                <i class="bi bi-eye"></i> Detail
+              </button>
+              <button class="btn-beli"><i class="bi bi-bag-plus"></i> Beli</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mozzarella -->
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="assets/risol-mozarella.jpg" alt="Risol Mozzarella" class="card-img-top">
+            <span class="badge-rasa">Mozzarella</span>
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Risol Mozzarella Keju</h5>
+            <p class="product-desc">Keju mozzarella yang melumer sempurna, menciptakan tekstur unik dan pengalaman rasa yang luar biasa.</p>
+            <div class="product-details">
+              <p class="product-price">Rp 15.000</p>
+              <p class="product-stock">Stok: <span class="stock-number">110</span></p>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn-risol flex-grow-1 btn-detail"
+                data-nama="Risol Mozzarella Keju" data-harga="Rp 15.000"
+                data-stok="110" data-varian="Mozzarella"
+                data-deskripsi="Risol premium dengan isian keju mozzarella berkualitas tinggi yang lembut dan melumer di mulut. Memberikan pengalaman rasa yang luar biasa."
+                data-bs-toggle="modal" data-bs-target="#detailModal">
+                <i class="bi bi-eye"></i> Detail
+              </button>
+              <button class="btn-beli"><i class="bi bi-bag-plus"></i> Beli</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beef -->
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="assets/risol-beef.jpg" alt="Risol Beef" class="card-img-top">
+            <span class="badge-rasa">Beef</span>
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Risol Beef Premium</h5>
+            <p class="product-desc">Daging sapi pilihan premium, empuk dan berkualitas tinggi untuk kepuasan rasa yang maksimal.</p>
+            <div class="product-details">
+              <p class="product-price">Rp 16.000</p>
+              <p class="product-stock">Stok: <span class="stock-number">75</span></p>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn-risol flex-grow-1 btn-detail"
+                data-nama="Risol Beef Premium" data-harga="Rp 16.000"
+                data-stok="75" data-varian="Beef"
+                data-deskripsi="Risol eksklusif dengan isian daging sapi premium yang dipilih dengan cermat. Daging berkualitas tinggi, empuk, dan bergizi."
+                data-bs-toggle="modal" data-bs-target="#detailModal">
+                <i class="bi bi-eye"></i> Detail
+              </button>
+              <button class="btn-beli"><i class="bi bi-bag-plus"></i> Beli</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tiramisu -->
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="assets/risol-tiramisu.jpg" alt="Risol Tiramisu" class="card-img-top">
+            <span class="badge-rasa">Tiramisu</span>
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Risol Tiramisu Manis</h5>
+            <p class="product-desc">Perpaduan manis tiramisu dan cita rasa tradisional risol — kolaborasi rasa yang tak terduga.</p>
+            <div class="product-details">
+              <p class="product-price">Rp 13.000</p>
+              <p class="product-stock">Stok: <span class="stock-number">105</span></p>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn-risol flex-grow-1 btn-detail"
+                data-nama="Risol Tiramisu Manis" data-harga="Rp 13.000"
+                data-stok="105" data-varian="Tiramisu"
+                data-deskripsi="Risol istimewa dengan isian tiramisu yang manis dan lezat. Perpaduan sempurna antara cita rasa tradisional risol dan kue tiramisu modern."
+                data-bs-toggle="modal" data-bs-target="#detailModal">
+                <i class="bi bi-eye"></i> Detail
+              </button>
+              <button class="btn-beli"><i class="bi bi-bag-plus"></i> Beli</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== MODAL DETAIL PRODUK ===== -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-risol">
+        <h5 class="modal-title">Detail Produk</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="detail-container">
+          <h4 id="modalNamaProduk" class="mb-3">—</h4>
+          <div class="row mb-4">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <h6 class="fw-bold text-muted">Varian</h6>
+              <p id="modalVarian" class="fs-5 mb-0">—</p>
+            </div>
+            <div class="col-md-6">
+              <h6 class="fw-bold text-muted">Harga</h6>
+              <p id="modalHarga" class="fs-5 mb-0" style="color:var(--risol-amber);font-weight:700;">—</p>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <h6 class="fw-bold text-muted">Stok Tersedia</h6>
+              <p id="modalStok" class="fs-5 mb-0">—</p>
+            </div>
+            <div class="col-md-6">
+              <h6 class="fw-bold text-muted">Status</h6>
+              <p class="mb-0"><span id="statusBadge" class="badge bg-secondary">—</span></p>
+            </div>
+          </div>
+          <hr style="border-color:var(--border-soft);">
+          <h6 class="fw-bold text-muted mb-2">Deskripsi Produk</h6>
+          <p id="modalDeskripsi" style="color:var(--text-secondary);line-height:1.7;">—</p>
+        </div>
+      </div>
+      <div class="modal-footer flex-wrap gap-2">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        <button type="button" id="btnHapusWishlist"
+          class="btn btn-outline-danger" style="display:none; border-radius:99px; font-size:0.85rem;">
+          <i class="bi bi-heart-fill me-1"></i> Hapus dari Wishlist
+        </button>
+        <button type="button" id="btnTambahWishlist"
+          class="btn btn-primary" style="border-radius:99px; font-size:0.85rem;">
+          <i class="bi bi-heart me-1"></i> + Wishlist
+        </button>
+        <button type="button" id="btnBeliModal"
+          class="btn btn-success" style="border-radius:99px; font-size:0.85rem;">
+          <i class="bi bi-bag-plus me-1"></i> Beli Sekarang
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== MODAL WISHLIST ===== -->
+<div class="modal fade" id="wishlistModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-risol">
+        <h5 class="modal-title">
+          <i class="bi bi-heart-fill me-2" style="color:var(--risol-gold);"></i>Wishlist Saya
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group" id="daftar-wishlist"></ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        <button type="button" id="btnKosongkanWishlist"
+          class="btn btn-danger" style="border-radius:99px; font-size:0.85rem;">
+          <i class="bi bi-trash me-1"></i> Kosongkan Semua
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="text-center">
+  <div class="container">
+    <p class="mb-0">&copy; 2026 Risol Majesty. Semua hak cipta dilindungi.</p>
+    <small>Sistem Manajemen Stok Produk</small>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
