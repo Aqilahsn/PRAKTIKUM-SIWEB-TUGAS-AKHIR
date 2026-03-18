@@ -32,7 +32,7 @@ Fitur yang ditambahkan:
 
 ---
 
-## 💻 Tentang Project
+##  Tentang Project
 
 Project ini merupakan pengembangan website berbasis **HTML, CSS, dan JavaScript** dengan fokus pada:
 - Pengelolaan interaksi user
