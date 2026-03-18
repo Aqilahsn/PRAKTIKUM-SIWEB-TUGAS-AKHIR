@@ -89,42 +89,44 @@ let produkAktif    = null;
 let stokElemenAktif = null;
 
 const inisialisasiModalDetail = () => {
-  const semuaTombolDetail = document.querySelectorAll('.btn-detail');
   const elModal = document.getElementById('detailModal');
   if (!elModal) return;
 
-  // Saat modal hendak ditampilkan, isi kontennya dari data-* tombol pemicu
-  elModal.addEventListener('show.bs.modal', (e) => {
-    const pemicu = e.relatedTarget; // tombol yang memicu modal
-    if (!pemicu || !pemicu.classList.contains('btn-detail')) return;
+  // Pasang event click langsung ke setiap tombol detail
+  document.querySelectorAll('.btn-detail').forEach(tombol => {
+    tombol.addEventListener('click', () => {
+      const { nama, harga, stok, varian, deskripsi } = tombol.dataset;
 
-    const { nama, harga, stok, varian, deskripsi } = pemicu.dataset;
+      // Cari stok live dari kartu (mungkin sudah berkurang sebelumnya)
+      stokElemenAktif = null;
+      document.querySelectorAll('.product-card').forEach(kartu => {
+        const judul = kartu.querySelector('.product-title');
+        if (judul && judul.textContent === nama) {
+          stokElemenAktif = kartu.querySelector('.stock-number');
+        }
+      });
 
-    // Cari stok live dari kartu (mungkin sudah berkurang sebelumnya)
-    stokElemenAktif = null;
-    document.querySelectorAll('.product-card').forEach(kartu => {
-      const judul = kartu.querySelector('.product-title');
-      if (judul && judul.textContent === nama) {
-        stokElemenAktif = kartu.querySelector('.stock-number');
-      }
+      const stokLive = stokElemenAktif
+        ? parseInt(stokElemenAktif.textContent)
+        : parseInt(stok);
+
+      produkAktif = { nama, harga, stok: stokLive, varian, deskripsi };
+
+      // Isi elemen modal satu per satu
+      document.getElementById('modalNamaProduk').textContent  = nama;
+      document.getElementById('modalVarian').textContent      = varian;
+      document.getElementById('modalHarga').textContent       = harga;
+      document.getElementById('modalStok').textContent        = `${stokLive} unit`;
+      document.getElementById('modalDeskripsi').textContent   = deskripsi;
+
+      perbaruiStatusBadge(stokLive);
+      perbaruiTombolBeliModal(stokLive);
+      sinkronTombolWishlist(nama);
+
+      // Buka modal secara manual
+      const bsModal = new bootstrap.Modal(elModal);
+      bsModal.show();
     });
-
-    const stokLive = stokElemenAktif
-      ? parseInt(stokElemenAktif.textContent)
-      : parseInt(stok);
-
-    produkAktif = { nama, harga, stok: stokLive, varian, deskripsi };
-
-    // Isi elemen modal satu per satu (tidak pakai innerHTML massal)
-    document.getElementById('modalNamaProduk').textContent  = nama;
-    document.getElementById('modalVarian').textContent      = varian;
-    document.getElementById('modalHarga').textContent       = harga;
-    document.getElementById('modalStok').textContent        = `${stokLive} unit`;
-    document.getElementById('modalDeskripsi').textContent   = deskripsi;
-
-    perbaruiStatusBadge(stokLive);
-    perbaruiTombolBeliModal(stokLive);
-    sinkronTombolWishlist(nama);
   });
 };
 
@@ -369,17 +371,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. Status login di navbar
   inisialisasiStatusLogin();
 
-  // Event tombol di modal detail
-  document.getElementById('btnTambahWishlist')?.addEventListener('click', tambahKeWishlist);
-  document.getElementById('btnHapusWishlist')?.addEventListener('click', hapusDariWishlist);
-  document.getElementById('btnBeliModal')?.addEventListener('click', beliDariModal);
+  // Tunggu DOM siap sebelum attach event listeners
+  setTimeout(() => {
+    // Event tombol di modal detail
+    const btnTambah = document.getElementById('btnTambahWishlist');
+    const btnHapus = document.getElementById('btnHapusWishlist');
+    const btnBeliModal = document.getElementById('btnBeliModal');
+    const wishlistModalEl = document.getElementById('wishlistModal');
+    const btnKosongkan = document.getElementById('btnKosongkanWishlist');
 
-  // Event modal wishlist — refresh daftar saat dibuka
-  document.getElementById('wishlistModal')
-    ?.addEventListener('show.bs.modal', tampilkanWishlist);
-
-  // Event tombol kosongkan wishlist
-  document.getElementById('btnKosongkanWishlist')
-    ?.addEventListener('click', kosongkanWishlist);
+    if (btnTambah) btnTambah.addEventListener('click', tambahKeWishlist);
+    if (btnHapus) btnHapus.addEventListener('click', hapusDariWishlist);
+    if (btnBeliModal) btnBeliModal.addEventListener('click', beliDariModal);
+    if (wishlistModalEl) wishlistModalEl.addEventListener('show.bs.modal', tampilkanWishlist);
+    if (btnKosongkan) btnKosongkan.addEventListener('click', kosongkanWishlist);
+  }, 100);
 
 });
