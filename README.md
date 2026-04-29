@@ -30,6 +30,18 @@ Fitur yang ditambahkan:
 - Alert saat **logout berhasil**
 - Perbaikan bug dari fitur sebelumnya
 
+### [Week 4](./Week4/TA_week4)
+
+Pada week ini project native (HTML, CSS, JavaScript) yang sudah dibuat sebelumnya diubah menjadi berbasis Laravel.
+
+Perubahan yang dilakukan:
+
+* Mengubah struktur project ke Laravel
+* Menggunakan konsep MVC (Model, View, Controller)
+* Mengubah HTML menjadi Blade Template
+* Mengatur routing menggunakan `web.php`
+* Memindahkan asset ke folder `public`
+
 ---
 
 ##  Tentang Project
