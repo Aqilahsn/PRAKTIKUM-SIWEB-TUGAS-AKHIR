@@ -1,27 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --pink-soft: #c25e86;
+  --pink-sakura: #fbdde8;
+  --pink-mid: #f472b6;
+  --matcha: #84cc16;
+  --matcha-deep: #5aa204;
+  --matcha-soft: #ecfbe6;
+  --maroon: #800020;
+  --cream: #fffaf5;
+  --text-dark: #3b0f14;
+  --text-muted: #6b3b3f;
+  --footer-bg: #2f2a2c; /* darker neutral for contrast */
+  --footer-overlay: rgba(47,42,44,0.9);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, var(--matcha-soft) 0%, #c78aa0 50%, #d190aa 100%);
+  color: var(--text-dark);
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, rgba(244,114,182,0.04), rgba(132,204,22,0.03));
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--matcha), #c7e86b);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--matcha-deep), #6aa10f);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(132, 204, 22, 0.12);
+  color: var(--matcha-deep);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Playfair Display", serif;
+  }
+  code,
+  pre {
+    font-family: "JetBrains Mono", monospace;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-pink-200/60 rounded-2xl;
+    box-shadow: 0 10px 32px rgba(183, 110, 121, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .glass-card-light {
+    @apply bg-pink-100/20 backdrop-blur-md border border-pink-200/40 rounded-2xl;
+  }
+
+  .btn-primary {
+    @apply relative px-7 py-3 rounded-full font-semibold text-white overflow-hidden transition-all duration-300;
+    background: linear-gradient(135deg, #f472b6 0%, #f472b6 50%, var(--matcha) 100%);
+    box-shadow: 0 6px 26px rgba(132,204,22,0.12);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 8px 30px rgba(132, 204, 22, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    @apply relative px-7 py-3 rounded-full font-semibold transition-all duration-300 border border-pink-400/50 text-pink-700 bg-white/40;
+  }
+  .btn-outline:hover {
+    @apply border-pink-500 text-pink-900;
+    background: rgba(244, 114, 182, 0.1);
+    box-shadow: 0 0 20px rgba(244, 114, 182, 0.2);
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold text-transparent bg-clip-text;
+    background-image: linear-gradient(135deg, #f472b6, var(--matcha), #6aa10f);
+  }
+
+  .section-subtitle {
+    @apply text-pink-800/70 text-lg mt-3;
+  }
+
+  .input-luxury {
+    @apply w-full px-5 py-4 rounded-2xl bg-white/80 border border-pink-200 text-pink-950 placeholder-pink-400/60 outline-none transition-all duration-300;
+    box-shadow: inset 0 2px 4px rgba(244, 114, 182, 0.02);
+  }
+  .input-luxury:focus {
+    @apply border-pink-400;
+    box-shadow: 0 0 20px rgba(244, 114, 182, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    background: #ffffff;
+  }
+
+  .tag-badge {
+    @apply px-3 py-1 text-xs font-semibold rounded-full;
+    background: linear-gradient(90deg, rgba(244,114,182,0.06), rgba(132,204,22,0.04));
+    border: 1px solid rgba(244,114,182,0.12);
+    color: #6b2140;
+  }
+
+  .orb {
+    @apply absolute rounded-full blur-3xl pointer-events-none;
+  }
+
+  .text-gradient {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(135deg, #800020, #db2777, #f472b6, var(--matcha));
+  }
+
+  .text-gradient-maroon {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(135deg, #800020, #be185d, #b76e79, var(--matcha-deep));
+  }
+
+  /* Footer styles to match theme */
+  .site-footer {
+    /* make footer transparent so the page gradient shows through */
+    background: transparent !important;
+    color: #f7eaf0;
+    border-top: 1px solid rgba(244,114,182,0.02);
+  }
+
+  .site-footer a {
+    color: #ffe6f2;
+  }
+
+  .tech-tags .tag-badge {
+    background: rgba(244,114,182,0.06);
+    border-color: rgba(244,114,182,0.14);
+  }
+
+  .border-gradient {
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    background-image: linear-gradient(
+      135deg,
+      rgba(244, 114, 182, 0.4),
+      rgba(128, 0, 32, 0.4)
+    );
+  }
+
+  .sakura-petal {
+    @apply absolute pointer-events-none select-none;
+    font-size: 1.2rem;
+    animation: petal linear infinite;
+  }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .text-shadow-pink {
+    text-shadow: 0 0 20px rgba(244, 114, 182, 0.25);
   }
+
+  .glow-pink {
+    box-shadow: 0 0 25px rgba(244, 114, 182, 0.25);
+  }
+
+  .glow-maroon {
+    box-shadow: 0 0 25px rgba(128, 0, 32, 0.2);
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+  .hover-lift:hover {
+    transform: translateY(-6px);
+  }
+
+  .shimmer-bg {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(244, 114, 182, 0.2) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+}
+
+/* Force page sections to be transparent so the global gradient shows through
+   This overrides inline background colors set in components that used solid white.
+   Keep this specific to top-level sections to avoid altering small card backgrounds. */
+section[id] {
+  background: transparent !important;
+}
+
+/* Lenis smooth scroll */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Nametag swing animation */
+@keyframes nametag-swing {
+  0% {
+    transform: rotate(-4deg);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(-2.5deg);
+  }
+  75% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(-4deg);
+  }
+}
+
+.nametag-swing {
+  animation: nametag-swing 5s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+/* Lanyard stripe pattern */
+.lanyard-pattern {
+  background: repeating-linear-gradient(
+    0deg,
+    #db2777 0px,
+    #db2777 3px,
+    #be185d 3px,
+    #be185d 6px,
+    #800020 6px,
+    #800020 9px,
+    #be185d 9px,
+    #be185d 12px
+  );
 }
