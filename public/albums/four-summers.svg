@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
-  <rect width="100%" height="100%" fill="#fff5f8"/>
-  <rect x="120" y="140" width="560" height="420" rx="24" fill="#ffd5e8" />
-  <circle cx="220" cy="260" r="44" fill="#f472b6" />
-  <text x="50%" y="78%" font-family="Playfair Display, serif" font-size="42" text-anchor="middle" fill="#6b1030">Four Summers</text>
-</svg>

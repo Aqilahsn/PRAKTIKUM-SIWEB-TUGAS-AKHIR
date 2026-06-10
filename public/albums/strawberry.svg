@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
-  <rect width="100%" height="100%" fill="#fff2f4"/>
-  <ellipse cx="400" cy="360" rx="220" ry="160" fill="#ffb4b4" />
-  <circle cx="360" cy="320" r="18" fill="#ef4444" />
-  <circle cx="430" cy="390" r="14" fill="#ef4444" />
-  <text x="50%" y="78%" font-family="Playfair Display, serif" font-size="36" text-anchor="middle" fill="#7b1120">Strawberry Fields</text>
-</svg>
