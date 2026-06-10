@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Risol Majesty</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --amber:  #C8622A;
+      --gold:   #E8974A;
+      --cream:  #F7F0E8;
+      --dark:   #1A0F08;
+      --brown:  #6B3A22;
+      --muted:  #9B8675;
+      --border: rgba(200,150,100,0.2);
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0D0805;
+      overflow: hidden;
+    }
+    .bg-glow-1 {
+      position: fixed; top: -120px; left: -120px;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(200,98,42,0.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .bg-glow-2 {
+      position: fixed; bottom: -80px; right: -80px;
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(107,58,34,0.16) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .bg-grid {
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(200,98,42,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,98,42,0.03) 1px, transparent 1px);
+      background-size: 55px 55px;
+      pointer-events: none;
+    }
+    .login-wrap {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 420px; padding: 16px;
+      animation: muncul 0.5s ease both;
+    }
+    @keyframes muncul {
+      from { opacity:0; transform:translateY(28px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .login-card {
+      background: rgba(24, 13, 6, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 40px 36px 34px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04);
+      backdrop-filter: blur(14px);
+    }
+    .brand-dot {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--amber), var(--gold));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: #FAF6F1;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(200,98,42,0.35);
+    }
+    .eyebrow {
+      font-size: 0.7rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--amber);
+      display: block; margin-bottom: 5px;
+    }
+    .login-judul {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700;
+      color: var(--cream); line-height: 1.2; margin-bottom: 4px;
+    }
+    .login-judul em { font-style: italic; color: var(--gold); }
+    .login-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 26px; }
+    .alert-gagal {
+      background: rgba(180,45,40,0.12);
+      border: 1px solid rgba(180,45,40,0.3);
+      border-radius: 10px; color: #ECA090;
+      font-size: 0.83rem; padding: 10px 14px;
+      margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
+    }
+    .form-label {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); display: block; margin-bottom: 7px;
+    }
+    .form-control {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 11px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem; color: var(--cream); outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    }
+    .form-control::placeholder { color: rgba(155,134,117,0.45); }
+    .form-control:focus {
+      background: rgba(255,255,255,0.07);
+      border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(200,98,42,0.13);
+    }
+    .form-check { display: flex; align-items: center; gap: 9px; }
+    .form-check-input {
+      width: 16px; height: 16px;
+      accent-color: var(--amber); cursor: pointer; flex-shrink: 0;
+    }
+    .form-check-label {
+      font-size: 0.83rem; color: var(--muted);
+      cursor: pointer; user-select: none; margin: 0;
+    }
+    .btn-warning {
+      width: 100%;
+      background: linear-gradient(135deg, var(--amber), var(--gold)) !important;
+      border: none !important; color: #FAF6F1 !important;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem; font-weight: 500;
+      padding: 12px 20px; border-radius: 99px !important;
+      transition: all 0.25s;
+    }
+    .btn-warning:hover {
+      background: linear-gradient(135deg, var(--brown), var(--amber)) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(200,98,42,0.3);
+    }
+    .text-white {
+      color: var(--muted) !important; font-size: 0.83rem;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .text-white:hover { color: var(--cream) !important; }
+    .login-hint {
+      margin-top: 20px; padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 0.77rem; color: var(--muted);
+      text-align: center; line-height: 1.7;
+    }
+    .login-hint code {
+      background: rgba(200,98,42,0.12); color: var(--gold);
+      padding: 1px 6px; border-radius: 4px; font-size: 0.77rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+  <div class="bg-grid"></div>
+
+  <div class="login-wrap">
+    <div class="login-card">
+
+      <div class="brand-dot"><i class="bi bi-shop"></i></div>
+      <span class="eyebrow">Risol Majesty · Admin Panel</span>
+      <h1 class="login-judul">Masuk ke <em>Dashboard</em></h1>
+      <p class="login-sub">Silakan login untuk mengelola stok produk</p>
+
+      <?php if (isset($_GET['error'])): ?>
+        <div class="alert-gagal" id="alertGagal" style="display:none;">
+      <?php else: ?>
+        <div class="alert-gagal" id="alertGagal" style="display:none;">
+      <?php endif; ?>
+        <i class="bi bi-exclamation-circle-fill"></i>
+        <span>Username atau password salah!</span>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" id="inputUsername" class="form-control"
+          placeholder="Masukkan username">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" id="inputPassword" class="form-control"
+          placeholder="Masukkan password">
+      </div>
+
+      <div class="form-check mb-3">
+        <input type="checkbox" id="checkRemember" class="form-check-input">
+        <label class="form-check-label" for="checkRemember">Remember Me</label>
+      </div>
+
+      <button class="btn btn-warning w-100" id="btnLogin">
+        <i class="bi bi-box-arrow-in-right me-2"></i>Login
+      </button>
+
+      <div class="text-center mt-3">
+        <a href="index.html" class="text-white">
+          <i class="bi bi-arrow-left me-1"></i>Kembali ke Beranda
+        </a>
+      </div>
+
+      <div class="login-hint">
+        Demo &nbsp;·&nbsp; username: <code>admin</code> &nbsp;·&nbsp; password: <code>admin123</code>
+      </div>
+
+    </div>
+  </div>
+  <script>
+    // Auto-isi username kalau remember me pernah dicentang
+    const inputUsername = document.getElementById('inputUsername');
+    const inputPassword = document.getElementById('inputPassword');
+    const alertGagal    = document.getElementById('alertGagal');
+    const checkRemember = document.getElementById('checkRemember');
+
+    const ingat = localStorage.getItem('rememberedUser');
+    if (ingat) { inputUsername.value = ingat; checkRemember.checked = true; }
+
+    // Kalau sudah login, langsung ke dashboard
+    if (sessionStorage.getItem('loginStatus') === 'true') {
+      window.location.href = 'index.html';
+    }
+
+    document.getElementById('btnLogin').addEventListener('click', () => {
+      const u = inputUsername.value.trim();
+      const p = inputPassword.value.trim();
+
+      if (u === 'admin' && p === 'admin123') {
+        sessionStorage.setItem('loginStatus', 'true');
+        sessionStorage.setItem('loginUser', u);
+        if (checkRemember.checked) {
+          localStorage.setItem('rememberedUser', u);
+        } else {
+          localStorage.removeItem('rememberedUser');
+        }
+        window.location.href = 'index.html';
+      } else {
+        alertGagal.style.display = 'flex';
+        inputPassword.value = '';
+        inputPassword.focus();
+      }
+    });
+
+    inputPassword.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') document.getElementById('btnLogin').click();
+    });
+    inputUsername.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') inputPassword.focus();
+    });
+    inputUsername.addEventListener('input', () => alertGagal.style.display = 'none');
+    inputPassword.addEventListener('input', () => alertGagal.style.display = 'none');
+  </script>
+</body>
+</html>

@@ -1,0 +1,576 @@
+\<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risol Majesty — Artisan Snacks</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">Risol Majesty</a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="color: rgba(247,240,232,0.8);">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="manage.html">Kelola Produk</a>
+        </li>
+        <li class="nav-item ms-2">
+          <button class="btn-theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+            <i class="bi bi-moon-stars"></i>
+          </button>
+        </li>
+        <li class="nav-item ms-2">
+          <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#wishlistModal">
+            <i class="bi bi-heart me-1"></i> Wishlist
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero-banner">
+  <div class="hero-banner-wrapper">
+    <img src="assets/banner-hero.jpg" alt="Banner Risol Majesty">
+  </div>
+  <div class="hero-text-overlay">
+    <span class="hero-eyebrow">Artisan · Handcrafted · Premium</span>
+    <h1 class="hero-title">Cita Rasa yang<br><em>Tak Terlupakan</em></h1>
+    <a href="#produk" class="hero-btn">
+      <i class="bi bi-arrow-down"></i> Jelajahi Produk
+    </a>
+  </div>
+</section>
+
+<!-- ===== STATISTICS ===== -->
+<section class="statistics-section">
+  <div class="container">
+    <div class="text-center mb-2">
+      <span class="section-label">Ringkasan</span>
+      <h2 class="section-title">Statistik Dashboard</h2>
+      <div class="section-divider"><span class="section-divider-dot"></span></div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="bi bi-palette"></i></div>
+          <span class="stat-number">6</span>
+          <p class="stat-label">Total Varian</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="bi bi-boxes"></i></div>
+          <span class="stat-number">500+</span>
+          <p class="stat-label">Stok Tersedia</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="bi bi-graph-up"></i></div>
+          <span class="stat-number">1.250</span>
+          <p class="stat-label">Total Penjualan</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="#produk" class="btn btn-warning px-4">
+        <i class="bi bi-eye me-2"></i> Lihat Produk
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section class="product-section" id="produk">
+  <div class="container">
+    <div class="text-center mb-2">
+      <span class="section-label">Koleksi Kami</span>
+      <h2 class="section-title">Daftar Produk Risol</h2>
+      <div class="section-divider"><span class="section-divider-dot"></span></div>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Matcha -->
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="assets/risol-matcha.jpg" alt="Risol Matcha" class="card-img-top">
+            <span class="badge-rasa">Matcha</span>
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Risol Matcha Premium</h5>
+            <p class="product-desc">Isian matcha berkualitas tinggi yang memberikan cita rasa unik dan menyegarkan untuk cemilan spesial.</p>
+            <div class="product-details">
+              <p class="product-price">Rp 12.000</p>
+              <p class="product-stock">Stok: <span class="stock-number">85</span></p>
+            </div>
+            <div class="d-flex gap-2 mt-auto">
+              <button class="btn-risol flex-grow-1" data-bs-toggle="modal" data-bs-target="#detailModal"
+                onclick="setDetailModal('Risol Matcha Premium','Rp 12.000','85','Matcha','Risol dengan isian matcha premium berkualitas tinggi yang memberikan cita rasa unik, lembut, dan menyegarkan. Dibuat dari bahan-bahan pilihan terbaik dengan proses produksi yang higienis.')">
+                <i class="bi bi-eye"></i> Detail
+              </button>
+              <button class="btn-beli" onclick="beliFitur(this)">
+                <i class="bi bi-bag-plus"></i> Beli
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coklat -->
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="assets/risol-coklat.jpg" alt="Risol Coklat" class="card-img-top">
+            <span class="badge-rasa">Coklat</span>
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Risol Coklat Lezat</h5>
+            <p class="product-desc">Isian coklat yang kaya dan lezat, menciptakan kelezatan yang tak terlupakan di setiap gigitan.</p>
+            <div class="product-details">
+              <p class="product-price">Rp 12.000</p>
+              <p class="product-stock">Stok: <span class="stock-number">120</span></p>
+            </div>
+            <div class="d-flex gap-2 mt-auto">
+              <button class="btn-risol flex-grow-1" data-bs-toggle="modal" data-bs-target="#detailModal"
+                onclick="setDetailModal('Risol Coklat Lezat','Rp 12.000','120','Coklat','Risol dengan isian coklat premium yang kaya dan lezat. Dibuat dari coklat pilihan dengan cita rasa yang pekat namun tidak terlalu manis.')">
+                <i class="bi bi-eye"></i> Detail
+              </button>
+              <button class="btn-beli" onclick="beliFitur(this)">
+                <i class="bi bi-bag-plus"></i> Beli
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bolognese -->
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="assets/risol-bolognese.jpg" alt="Risol Bolognese" class="card-img-top">
+            <span class="badge-rasa">Bolognese</span>
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Risol Bolognese Istimewa</h5>
+            <p class="product-desc">Risol gurih dengan isian daging sapi empuk berkualitas istimewa, bumbu autentik khas Italia.</p>
+            <div class="product-details">
+              <p class="product-price">Rp 14.000</p>
+              <p class="product-stock">Stok: <span class="stock-number">95</span></p>
+            </div>
+            <div class="d-flex gap-2 mt-auto">
+              <button class="btn-risol flex-grow-1" data-bs-toggle="modal" data-bs-target="#detailModal"
+                onclick="setDetailModal('Risol Bolognese Istimewa','Rp 14.000','95','Bolognese','Risol dengan isian daging sapi berkualitas tinggi yang dimasak dengan bumbu khas bolognese yang autentik. Daging empuk dan gurih, menciptakan cita rasa yang istimewa.')">
+                <i class="bi bi-eye"></i> Detail
+              </button>
+              <button class="btn-beli" onclick="beliFitur(this)">
+                <i class="bi bi-bag-plus"></i> Beli
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mozzarella -->
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="assets/risol-mozarella.jpg" alt="Risol Mozzarella" class="card-img-top">
+            <span class="badge-rasa">Mozzarella</span>
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Risol Mozzarella Keju</h5>
+            <p class="product-desc">Keju mozzarella yang melumer sempurna, menciptakan tekstur unik dan pengalaman rasa yang luar biasa.</p>
+            <div class="product-details">
+              <p class="product-price">Rp 15.000</p>
+              <p class="product-stock">Stok: <span class="stock-number">110</span></p>
+            </div>
+            <div class="d-flex gap-2 mt-auto">
+              <button class="btn-risol flex-grow-1" data-bs-toggle="modal" data-bs-target="#detailModal"
+                onclick="setDetailModal('Risol Mozzarella Keju','Rp 15.000','110','Mozzarella','Risol premium dengan isian keju mozzarella berkualitas tinggi yang lembut dan melumer di mulut.')">
+                <i class="bi bi-eye"></i> Detail
+              </button>
+              <button class="btn-beli" onclick="beliFitur(this)">
+                <i class="bi bi-bag-plus"></i> Beli
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beef -->
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="assets/risol-beef.jpg" alt="Risol Beef" class="card-img-top">
+            <span class="badge-rasa">Beef</span>
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Risol Beef Premium</h5>
+            <p class="product-desc">Daging sapi pilihan premium, empuk dan berkualitas tinggi untuk kepuasan maksimal.</p>
+            <div class="product-details">
+              <p class="product-price">Rp 16.000</p>
+              <p class="product-stock">Stok: <span class="stock-number">75</span></p>
+            </div>
+            <div class="d-flex gap-2 mt-auto">
+              <button class="btn-risol flex-grow-1" data-bs-toggle="modal" data-bs-target="#detailModal"
+                onclick="setDetailModal('Risol Beef Premium','Rp 16.000','75','Beef','Risol eksklusif dengan isian daging sapi premium yang dipilih dengan cermat dan dimasak dengan sempurna.')">
+                <i class="bi bi-eye"></i> Detail
+              </button>
+              <button class="btn-beli" onclick="beliFitur(this)">
+                <i class="bi bi-bag-plus"></i> Beli
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tiramisu -->
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-image-wrapper">
+            <img src="assets/risol-tiramisu.jpg" alt="Risol Tiramisu" class="card-img-top">
+            <span class="badge-rasa">Tiramisu</span>
+          </div>
+          <div class="product-body">
+            <h5 class="product-title">Risol Tiramisu Manis</h5>
+            <p class="product-desc">Perpaduan manis tiramisu dan cita rasa tradisional risol, sebuah kolaborasi rasa yang tak terduga.</p>
+            <div class="product-details">
+              <p class="product-price">Rp 13.000</p>
+              <p class="product-stock">Stok: <span class="stock-number">105</span></p>
+            </div>
+            <div class="d-flex gap-2 mt-auto">
+              <button class="btn-risol flex-grow-1" data-bs-toggle="modal" data-bs-target="#detailModal"
+                onclick="setDetailModal('Risol Tiramisu Manis','Rp 13.000','105','Tiramisu','Risol istimewa dengan isian tiramisu yang manis dan lezat, perpaduan sempurna antara rasa tradisional risol dan kue tiramisu modern.')">
+                <i class="bi bi-eye"></i> Detail
+              </button>
+              <button class="btn-beli" onclick="beliFitur(this)">
+                <i class="bi bi-bag-plus"></i> Beli
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODAL DETAIL ===== -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-risol">
+        <h5 class="modal-title" id="detailModalLabel">Detail Produk</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="detail-container">
+          <h4 id="modalProdukNama" class="mb-3">Nama Produk</h4>
+          <div class="row mb-4">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <h6 class="fw-bold text-muted">Varian</h6>
+              <p id="modalVarian" class="fs-5 mb-0">—</p>
+            </div>
+            <div class="col-md-6">
+              <h6 class="fw-bold text-muted">Harga</h6>
+              <p id="modalHarga" class="fs-5 mb-0" style="color: var(--risol-amber); font-weight: 700;">—</p>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <h6 class="fw-bold text-muted">Stok Tersedia</h6>
+              <p id="modalStok" class="fs-5 mb-0">—</p>
+            </div>
+            <div class="col-md-6">
+              <h6 class="fw-bold text-muted">Status</h6>
+              <p class="mb-0"><span id="statusBadge" class="badge bg-success">Tersedia</span></p>
+            </div>
+          </div>
+          <hr style="border-color: var(--border-soft);">
+          <h6 class="fw-bold text-muted mb-2">Deskripsi Produk</h6>
+          <p id="modalDeskripsi" style="color: var(--text-secondary); line-height: 1.7;">—</p>
+          <hr style="border-color: var(--border-soft);">
+          <div class="alert-info p-3 rounded-3">
+            <i class="bi bi-info-circle me-2" style="color: var(--risol-amber);"></i>
+            <strong>Informasi:</strong> Produk ini berkualitas tinggi dan dibuat dengan bahan-bahan terbaik.
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        <button type="button" class="btn btn-danger" onclick="hapusMishlist()" id="btnHapusMishlist" style="display:none; border-radius: 99px; font-size: 0.85rem;">
+          <i class="bi bi-trash me-1"></i> Hapus dari Wishlist
+        </button>
+        <button type="button" class="btn btn-primary" onclick="tambahMishlist()" id="btnTambahMishlist">
+          <i class="bi bi-heart-fill me-1"></i> Tambah ke Wishlist
+        </button>
+        <button type="button" class="btn btn-success" onclick="beliDariModal()" id="btnBeliModal" style="border-radius:99px; font-size:0.85rem;">
+          <i class="bi bi-bag-plus me-1"></i> Beli Sekarang
+        </button>
+        <a href="manage.html" class="btn btn-warning">
+          <i class="bi bi-plus-circle me-1"></i> Tambah Produk
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL WISHLIST ===== -->
+<div class="modal fade" id="wishlistModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-risol">
+        <h5 class="modal-title">Daftar Wishlist Saya</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group" id="daftar-wishlist">
+          <li class="list-group-item text-muted fst-italic">Belum ada produk di wishlist</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        <button type="button" class="btn btn-danger" onclick="hapusWishlist()" style="border-radius:99px; font-size:0.85rem;">Kosongkan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="text-center">
+  <div class="container">
+    <p class="mb-0">&copy; 2026 Risol Majesty. Semua hak cipta dilindungi.</p>
+    <small>Sistem Manajemen Stok Produk</small>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Dark Mode
+  const btnTheme = document.getElementById('themeToggle');
+  const body = document.body;
+  if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+    btnTheme.innerHTML = '<i class="bi bi-sun-fill"></i>';
+  }
+  btnTheme.addEventListener('click', function() {
+    body.classList.toggle('dark-mode');
+    if (body.classList.contains('dark-mode')) {
+      localStorage.setItem('theme', 'dark');
+      btnTheme.innerHTML = '<i class="bi bi-sun-fill"></i>';
+    } else {
+      localStorage.removeItem('theme');
+      btnTheme.innerHTML = '<i class="bi bi-moon-stars"></i>';
+    }
+  });
+
+  // ================================================
+  // FITUR BELI (Event Listener & DOM manipulation)
+  // ================================================
+  function aktivasiTombolBeli() {
+    // Clone tombol beli untuk hapus event lama (hindari duplikasi)
+    const tombolBeli = document.querySelectorAll('.btn-beli');
+    tombolBeli.forEach(function(button) {
+      button.replaceWith(button.cloneNode(true));
+    });
+
+    const tombolBaru = document.querySelectorAll('.btn-beli');
+    tombolBaru.forEach(function(button) {
+      button.addEventListener('click', function(e) {
+        const cardBody = e.target.closest('.product-body');
+        const stokEl = cardBody.querySelector('.stock-number');
+        let stok = parseInt(stokEl.innerText.replace('Stok: ', ''));
+        if (stok > 0) {
+          stok--;
+          stokEl.innerText = stok;
+          const namaBarang = cardBody.querySelector('.product-title').innerText;
+          alert('Berhasil membeli ' + namaBarang + '!');
+          if (stok === 0) {
+            e.target.disabled = true;
+            e.target.innerText = 'Habis';
+            e.target.style.background = '#999';
+            e.target.style.cursor = 'not-allowed';
+          }
+        } else {
+          alert('Stok Habis!');
+          e.target.disabled = true;
+          e.target.innerText = 'Habis';
+          e.target.style.background = '#999';
+          e.target.style.cursor = 'not-allowed';
+        }
+      });
+    });
+  }
+  aktivasiTombolBeli();
+
+  // ================================================
+  // MODAL DETAIL + BELI DARI MODAL
+  // ================================================
+  let currentProduct = null;
+  let currentCardStokEl = null;
+
+  function setDetailModal(nama, harga, stok, varian, deskripsi) {
+    // Find the card that was just clicked to sync stok
+    const allCards = document.querySelectorAll('.product-card');
+    currentCardStokEl = null;
+    allCards.forEach(card => {
+      const title = card.querySelector('.product-title');
+      if (title && title.textContent === nama) {
+        currentCardStokEl = card.querySelector('.stock-number');
+      }
+    });
+
+    // Use live stok from card if available (already decremented by beliFitur)
+    const liveStok = currentCardStokEl ? parseInt(currentCardStokEl.textContent) : parseInt(stok);
+    currentProduct = { nama, harga, stok: liveStok, varian, deskripsi };
+
+    document.getElementById('modalProdukNama').textContent = nama;
+    document.getElementById('modalHarga').textContent = harga;
+    document.getElementById('modalStok').textContent = liveStok + ' unit';
+    document.getElementById('modalVarian').textContent = varian;
+    document.getElementById('modalDeskripsi').textContent = deskripsi;
+
+    updateStatusBadge(liveStok);
+
+    const btnBeli = document.getElementById('btnBeliModal');
+    if (liveStok <= 0) {
+      btnBeli.disabled = true;
+      btnBeli.innerHTML = '<i class="bi bi-x-circle me-1"></i> Stok Habis';
+    } else {
+      btnBeli.disabled = false;
+      btnBeli.innerHTML = '<i class="bi bi-bag-plus me-1"></i> Beli Sekarang';
+    }
+
+    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    const inList = wishlist.some(i => i.nama === nama);
+    document.getElementById('btnTambahMishlist').style.display = inList ? 'none' : 'inline-block';
+    document.getElementById('btnHapusMishlist').style.display = inList ? 'inline-block' : 'none';
+  }
+
+  function updateStatusBadge(n) {
+    const badge = document.getElementById('statusBadge');
+    if (n > 50) { badge.textContent = 'Stok Melimpah'; badge.className = 'badge bg-success'; }
+    else if (n > 20) { badge.textContent = 'Stok Tersedia'; badge.className = 'badge bg-info text-dark'; }
+    else if (n > 0) { badge.textContent = 'Stok Terbatas'; badge.className = 'badge bg-warning text-dark'; }
+    else { badge.textContent = 'Habis'; badge.className = 'badge bg-danger'; }
+  }
+
+  function beliDariModal() {
+    if (!currentProduct || currentProduct.stok <= 0) {
+      alert('Stok Habis!');
+      return;
+    }
+    currentProduct.stok--;
+    alert('Berhasil membeli ' + currentProduct.nama + '!');
+
+    // Update tampilan modal
+    document.getElementById('modalStok').textContent = currentProduct.stok + ' unit';
+    updateStatusBadge(currentProduct.stok);
+
+    // Sinkronisasi stok di kartu produk
+    if (currentCardStokEl) {
+      currentCardStokEl.textContent = currentProduct.stok;
+      if (currentProduct.stok === 0) {
+        const card = currentCardStokEl.closest('.product-card');
+        const cardBeli = card ? card.querySelector('.btn-beli') : null;
+        if (cardBeli) {
+          cardBeli.disabled = true;
+          cardBeli.innerText = 'Habis';
+          cardBeli.style.background = '#999';
+          cardBeli.style.cursor = 'not-allowed';
+        }
+      }
+    }
+
+    if (currentProduct.stok === 0) {
+      const btnBeli = document.getElementById('btnBeliModal');
+      btnBeli.disabled = true;
+      btnBeli.innerHTML = '<i class="bi bi-x-circle me-1"></i> Stok Habis';
+    }
+  }
+
+  function tambahMishlist() {
+    if (!currentProduct) return;
+    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    if (!wishlist.some(i => i.nama === currentProduct.nama)) {
+      wishlist.push(currentProduct);
+      localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      document.getElementById('btnTambahMishlist').style.display = 'none';
+      document.getElementById('btnHapusMishlist').style.display = 'inline-block';
+      alert('Produk "' + currentProduct.nama + '" ditambahkan ke wishlist!');
+    } else {
+      alert('Produk sudah ada di wishlist!');
+    }
+  }
+
+  function hapusMishlist() {
+    if (!currentProduct) return;
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    wishlist = wishlist.filter(i => i.nama !== currentProduct.nama);
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    document.getElementById('btnTambahMishlist').style.display = 'inline-block';
+    document.getElementById('btnHapusMishlist').style.display = 'none';
+    alert('Produk "' + currentProduct.nama + '" dihapus dari wishlist!');
+  }
+
+  function hapusWishlist() {
+    if (confirm('Apakah Anda yakin ingin menghapus semua produk dari wishlist?')) {
+      localStorage.removeItem('wishlist');
+      tampilkanWishlist();
+      alert('Wishlist telah dikosongkan!');
+    }
+  }
+
+  function tampilkanWishlist() {
+    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    const el = document.getElementById('daftar-wishlist');
+    if (wishlist.length === 0) {
+      el.innerHTML = '<li class="list-group-item text-muted fst-italic">Belum ada produk di wishlist</li>';
+    } else {
+      el.innerHTML = wishlist.map((item, i) => `
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <strong style="font-family: 'Playfair Display', serif;">${item.nama}</strong>
+            <br><small class="text-muted">Varian: ${item.varian} &middot; ${item.harga}</small>
+          </div>
+          <button class="btn btn-sm btn-danger" onclick="hapusItemWishlist(${i})" style="border-radius:99px;">
+            <i class="bi bi-trash"></i>
+          </button>
+        </li>
+      `).join('');
+    }
+  }
+
+  function hapusItemWishlist(index) {
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    const nama = wishlist[index].nama;
+    wishlist.splice(index, 1);
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    tampilkanWishlist();
+    alert('Produk "' + nama + '" dihapus dari wishlist!');
+  }
+
+  document.getElementById('wishlistModal').addEventListener('show.bs.modal', tampilkanWishlist);
+</script>
+</body>
+</html>
